@@ -11,11 +11,8 @@ import {
   CarouselProvider,
   Slider,
   Slide,
-  ButtonBack,
-  ButtonNext,
   Image,
 } from "pure-react-carousel";
-import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import { Link } from "react-router-dom";
 import img1 from "../Assets/img1.jpg";
