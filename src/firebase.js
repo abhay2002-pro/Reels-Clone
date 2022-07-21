@@ -9,7 +9,7 @@ const firebaseConfig = {
   projectId: "reels-37a7f",
   storageBucket: "reels-37a7f.appspot.com",
   messagingSenderId: "509101681918",
-  appId: "1:509101681918:web:38c198e2958d9f420ac9af"
+  appId: "1:509101681918:web:38c198e2958d9f420ac9af",
 };
 
 // Initialize Firebase
@@ -20,6 +20,7 @@ export const auth = firebase.auth();
 const firestore = firebase.firestore();
 export const database = {
   users: firestore.collection("users"),
+  posts: firestore.collection("posts"),
   getTimeStamp: firebase.firestore.FieldValue.serverTimestamp,
 };
 
