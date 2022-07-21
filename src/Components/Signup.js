@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import styles from "./Signup.module.css";
 import insta from "../Assets/Instagram.JPG";
-import { Button, CardActions, Alert, TextField, PasswordField } from "@mui/material";
+import { Button, CardActions, Alert, TextField } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import { Link, useHistory } from "react-router-dom";
@@ -105,7 +105,7 @@ export default function Signup() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <PasswordField
+            <TextField
               id="outlined-basic"
               label="Password"
               variant="outlined"

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -11,15 +11,37 @@ import bg from "../Assets/insta.png";
 import { CarouselProvider, Slider, Slide, Image } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import { Link, useHistory } from "react-router-dom";
+import { AuthContext } from "../Context/AuthContext";
 
 import img1 from "../Assets/img1.jpg";
 import img2 from "../Assets/img2.jpg";
 import img3 from "../Assets/img3.jpg";
 import img4 from "../Assets/img4.jpg";
 import img5 from "../Assets/img5.jpg";
-import { AuthContext } from "../Context/AuthContext";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
+  const { login } = useContext(AuthContext);
+
+  const handleClick = async () => {
+    try {
+      setError("");
+      setLoading(true);
+      let res = await login(email, password);
+      setLoading(false);
+      history.push("/");
+    } catch (err) {
+      setError(err);
+      setTimeout(() => {
+        setError("");
+      }, 2000);
+      setLoading(false);
+    }
+  };
   const useStyles = makeStyles({
     text1: {
       color: "grey",
@@ -78,7 +100,7 @@ export default function Login() {
             <img src={insta} alt="Instagram" />
           </div>
           <CardContent>
-            {true && <Alert severity="error">Check it out</Alert>}
+            {error!=="" && <Alert severity="error">{error}</Alert>}
             <TextField
               id="outlined-basic"
               label="Email"
@@ -86,6 +108,8 @@ export default function Login() {
               fullWidth={true}
               margin="dense"
               size="small"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
               id="outlined-basic"
@@ -94,6 +118,8 @@ export default function Login() {
               fullWidth={true}
               margin="dense"
               size="small"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <Typography
               className={classes.text2}
@@ -109,6 +135,8 @@ export default function Login() {
               color="primary"
               fullWidth={true}
               variant="contained"
+              onClick={handleClick}
+              disabled={loading}
             >
               Log in
             </Button>
