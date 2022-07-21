@@ -4,12 +4,12 @@ import "firebase/compat/storage";
 import "firebase/compat/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBQ42uRUpb0PeLJVhpcdoZicmEUMXYCbR8",
-  authDomain: "reels-e69ac.firebaseapp.com",
-  projectId: "reels-e69ac",
-  storageBucket: "reels-e69ac.appspot.com",
-  messagingSenderId: "469355742782",
-  appId: "1:469355742782:web:7dbf62fb3a4c3b665d336f"
+  apiKey: "AIzaSyCcn-R8mJ5s5kDHcCQphXTbcoPurQGfy8I",
+  authDomain: "reels-37a7f.firebaseapp.com",
+  projectId: "reels-37a7f",
+  storageBucket: "reels-37a7f.appspot.com",
+  messagingSenderId: "509101681918",
+  appId: "1:509101681918:web:38c198e2958d9f420ac9af"
 };
 
 // Initialize Firebase
@@ -19,8 +19,8 @@ export const auth = firebase.auth();
 
 const firestore = firebase.firestore();
 export const database = {
-    users : firestore.collection("users"),
-    getTimeStamp: firebase.firestore.FieldValue.getTimeStamp
-}
+  users: firestore.collection("users"),
+  getTimeStamp: firebase.firestore.FieldValue.serverTimestamp,
+};
 
-export const storage = firestore.storage()
+export const storage = firebase.storage();

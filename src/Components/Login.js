@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -7,19 +8,16 @@ import insta from "../Assets/Instagram.JPG";
 import { Button, CardActions, Alert, TextField } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import bg from "../Assets/insta.png";
-import {
-  CarouselProvider,
-  Slider,
-  Slide,
-  Image,
-} from "pure-react-carousel";
+import { CarouselProvider, Slider, Slide, Image } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+
 import img1 from "../Assets/img1.jpg";
 import img2 from "../Assets/img2.jpg";
 import img3 from "../Assets/img3.jpg";
 import img4 from "../Assets/img4.jpg";
 import img5 from "../Assets/img5.jpg";
+import { AuthContext } from "../Context/AuthContext";
 
 export default function Login() {
   const useStyles = makeStyles({
